@@ -10,8 +10,8 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { name, email, password }) => {
-            const user = await User.create({ name, email, password });
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
             const token = signToken(user);
             console.log(user)
 
@@ -19,18 +19,18 @@ const resolvers = {
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
-            if (!profile) {
-                throw new AuthenticationError('No profile with this email found!');
+            if (!user) {
+                throw new AuthenticationError('No user with this email found!');
             }
 
-            const correctPw = await profile.isCorrectPassword(password);
+            const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
                 throw new AuthenticationError('Incorrect password!');
             }
 
-            const token = signToken(profile);
-            return { token, profile };
+            const token = signToken(user);
+            return { token, user };
         },
         saveBook: async (parent, args, context) => {
             if (user.context) {

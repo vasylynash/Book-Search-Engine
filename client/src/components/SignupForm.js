@@ -29,9 +29,9 @@ const SignupForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    console.log(userFormData)
     try {
-      const data = await addUser({
+      const { data } = await addUser({
         variables: {...userFormData}
       });
 
@@ -42,6 +42,7 @@ const SignupForm = () => {
       // const { token, user } = await response.json();
       // console.log(user);
       Auth.login(data.addUser.token);
+      console.log(data)
     } catch (err) {
       console.error(err);
       setShowAlert(true);
