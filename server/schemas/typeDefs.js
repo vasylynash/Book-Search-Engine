@@ -24,7 +24,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        me: User
+        me(_id: ID!): User
     }
 
     input BookData {
