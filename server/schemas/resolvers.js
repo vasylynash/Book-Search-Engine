@@ -16,7 +16,6 @@ const resolvers = {
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
-            // console.log(user)
 
             return { token, user };
         },
@@ -36,7 +35,6 @@ const resolvers = {
             return { token, user };
         },
         saveBook: async (parent, args, context) => {
-            // console.log(args)
             if (context.user) {
                 return User.findOneAndUpdate(
                     {_id: context.user._id},
