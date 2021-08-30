@@ -20,6 +20,42 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
+        email
+        bookCount
+        savedBooks {
+          bookId
+        }
+      }
+    }
+  }
+`;
+
+export const SAVE_BOOK = gql `
+  mutation saveBook($book: BookData!) {
+    saveBook(book: $book) {
+        _id
+        username
+        bookCount
+        savedBooks {
+          bookId
+        }
+    }
+  }
+`;
+
+export const REMOVE_BOOK = gql `
+  mutation removeBook($bookId: String!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
       }
     }
   }
