@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Description
-  A Google Books API search engine with GraphQL. The application uses an Express.js, MongoDB, and Apollo server.
+  A Google Books API search engine with GraphQL. The application uses an Express.js, MongoDB, React, and Apollo server.
 
   ## Table of Contents
   [Installation](#installation)  
